@@ -1,5 +1,6 @@
 'use client';
 
+import { useRef, useEffect } from 'react';
 import { useFormState } from 'react-dom';
 import { useFormStatus } from 'react-dom';
 import { createTodo } from '@/app/actions';
@@ -19,10 +20,17 @@ function SubmitButton() {
 }
 
 export function AddForm() {
+  const formRef = useRef<HTMLFormElement>(null);
   const [state, formAction] = useFormState(createTodo, initialState);
 
+  useEffect(() => {
+    if (state.messages.at(-1) !== 'Failed to create todo') {
+      formRef?.current?.reset();
+    }
+  }, [state]);
+
   return (
-    <form action={formAction}>
+    <form ref={formRef} action={formAction}>
       <label htmlFor='todo'>Enter Task</label>
       <input type='text' id='todo' name='todo' required />
       <SubmitButton />
