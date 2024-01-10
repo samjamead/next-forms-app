@@ -10,6 +10,10 @@ body {
   padding: 20px;
 }
 
+form {
+  width: 300px;
+}
+
 label {
   font-weight: bold;
   display: block;
@@ -31,7 +35,8 @@ button {
   background-color: black;
   border-radius: 4px;
   color: white;
-  padding: 10px 24px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   border: none;
   cursor: pointer;
   width: 100%;
@@ -50,7 +55,7 @@ button[aria-disabled='true'] {
 
 ul {
   padding: 0;
-  margin: auto;
+  margin: 2rem auto;
 }
 
 li {
